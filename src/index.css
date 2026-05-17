@@ -1,0 +1,136 @@
+:root {
+  /* Warm ink-on-parchment — backgrounds match cream text, not blue-gray */
+  --bg-deep: #1f1c18;
+  --bg-card: #2a2620;
+  --bg-elevated: #353028;
+  --bg-input: #252219;
+  --ink: #f4efe6;
+  --ink-secondary: #dbd3c8;
+  --ink-muted: #a99f92;
+  --accent: #94b8a0;
+  --accent-soft: rgba(148, 184, 160, 0.16);
+  --accent-secondary: #d4c4a0;
+  --border: rgba(244, 239, 230, 0.11);
+  --border-strong: rgba(244, 239, 230, 0.2);
+  --radius: 12px;
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-sans: "Outfit", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --line-body: 1.65;
+  --line-heading: 1.4;
+  --line-reading: 1.75;
+  /* Typography scale — used across all tabs (16px browser default) */
+  --text-caption: 0.75rem;
+  --text-small: 0.875rem;
+  --text-body: 1rem;
+  --text-reading: 1.0625rem;
+  --text-lead: 1.125rem;
+  --text-title: 1.3125rem;
+  --text-display: 1.5rem;
+  --touch-min: 2.75rem;
+  --shadow-card: 0 2px 16px rgba(12, 10, 8, 0.4);
+
+  /* Legacy aliases used in modules */
+  --zen: var(--accent);
+  --zen-glow: var(--accent-soft);
+  --advaita: var(--accent-secondary);
+  --advaita-glow: rgba(212, 196, 160, 0.12);
+  --both: #a8b4c8;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: var(--line-body);
+  color: var(--ink);
+  background-color: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse 85% 55% at 50% -12%, var(--accent-soft), transparent 68%),
+    radial-gradient(ellipse 50% 45% at 0% 100%, var(--advaita-glow), transparent 62%),
+    radial-gradient(ellipse 40% 35% at 100% 85%, rgba(148, 184, 160, 0.07), transparent 58%);
+}
+
+#root {
+  min-height: 100dvh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+textarea,
+input {
+  font-family: inherit;
+  color: var(--ink);
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+/*
+ * Mobile: 16px base (WCAG-friendly), compact UI type.
+ * Body 16px / line ~1.55 is the usual comfort zone for phones.
+ */
+@media (max-width: 640px) {
+  :root {
+    --text-caption: 0.6875rem;
+    --text-small: 0.8125rem;
+    --text-body: 1rem;
+    --text-reading: 1.0625rem;
+    --text-lead: 1.125rem;
+    --text-title: 1.25rem;
+    --text-display: 1.375rem;
+    --line-body: 1.55;
+    --line-reading: 1.62;
+    --line-heading: 1.32;
+    --radius: 10px;
+    --touch-min: 2.75rem;
+  }
+
+  html {
+    font-size: 100%;
+  }
+
+  body {
+    font-size: var(--text-body);
+    line-height: var(--line-body);
+    background-image: none;
+    background-color: #242019;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

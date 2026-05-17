@@ -1,0 +1,140 @@
+.contemplate {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-bottom: 1rem;
+}
+
+.header .title {
+  font-family: var(--font-serif);
+  font-size: var(--text-display);
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--text-body);
+  color: var(--ink-secondary);
+  line-height: var(--line-body);
+  max-width: 55ch;
+}
+
+.staticNote {
+  margin: 0.75rem 0 0;
+  font-size: var(--text-small);
+  line-height: var(--line-body);
+  color: var(--ink-muted);
+  max-width: 55ch;
+}
+
+.watchFeatured {
+  padding: 0.25rem 0 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.watchTitle {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-serif);
+  font-size: var(--text-title);
+  font-weight: 500;
+}
+
+.watchIntro {
+  margin: 0 0 0.75rem;
+  font-size: var(--text-body);
+  color: var(--ink-secondary);
+  line-height: var(--line-body);
+  max-width: 55ch;
+}
+
+.scrollHint {
+  margin: 0 0 0.35rem;
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+}
+
+.stickyNav {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  margin: 0 -0.25rem;
+  padding: 0.5rem 0.25rem 0.65rem;
+  background: color-mix(in srgb, var(--bg-deep) 92%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-bottom: 0.2rem;
+}
+
+.filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filterBtn {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  padding: 0.4rem 0.85rem;
+  font-size: var(--text-small);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.filterActive {
+  color: var(--ink);
+  background: var(--bg-card);
+}
+
+.count {
+  margin: 0;
+  font-size: var(--text-body);
+  color: var(--ink-muted);
+}
+
+.inquiryFeed {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .header .title {
+    font-size: var(--text-title);
+  }
+
+  .subtitle,
+  .watchIntro,
+  .count {
+    max-width: none;
+    font-size: var(--text-small);
+  }
+
+  .watchTitle {
+    font-size: var(--text-body);
+  }
+
+  .filterBtn {
+    min-height: var(--touch-min);
+    font-size: var(--text-small);
+    padding: 0.4rem 0.75rem;
+  }
+
+  .inquiryFeed {
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,257 @@
+.practice {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  text-align: left;
+}
+
+.header .title {
+  font-family: var(--font-serif);
+  font-size: var(--text-display);
+  font-weight: 500;
+  margin: 0 0 0.5rem;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--text-body);
+  color: var(--ink-secondary);
+  line-height: var(--line-body);
+  max-width: 55ch;
+}
+
+.timerWrap {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+
+.ring {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ringBg {
+  fill: none;
+  stroke: var(--bg-elevated);
+  stroke-width: 4;
+}
+
+.ringProgress {
+  fill: none;
+  stroke: var(--zen);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 339.292;
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.timerDisplay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.time {
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.phase {
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+}
+
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.preset {
+  padding: 0.45rem 0.85rem;
+  font-size: var(--text-small);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--ink-muted);
+}
+
+.presetActive {
+  color: var(--zen);
+  border-color: rgba(148, 184, 160, 0.4);
+  background: var(--zen-glow);
+}
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.primaryBtn {
+  padding: 0.7rem 2rem;
+  font-size: var(--text-body);
+  border-radius: var(--radius);
+  background: var(--zen);
+  color: var(--bg-deep);
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+
+.primaryBtn:hover {
+  opacity: 0.9;
+}
+
+.secondaryBtn {
+  padding: 0.7rem 1.25rem;
+  font-size: var(--text-body);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.secondaryBtn:hover {
+  background: var(--bg-elevated);
+}
+
+.guide {
+  width: 100%;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.guideTitle {
+  font-family: var(--font-serif);
+  font-size: var(--text-lead);
+  margin: 0 0 0.75rem;
+  font-weight: 500;
+}
+
+.guide ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--ink-secondary);
+  line-height: var(--line-body);
+  font-size: var(--text-body);
+}
+
+.guide strong {
+  color: var(--zen);
+  font-weight: 400;
+}
+
+.ambientToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-small);
+  color: var(--ink-secondary);
+  width: 100%;
+}
+
+.micro {
+  width: 100%;
+  text-align: left;
+}
+
+.microTitle {
+  margin: 0 0 0.5rem;
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+
+.micro ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.microBtn {
+  font-size: var(--text-small);
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  color: var(--ink-muted);
+}
+
+.journal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.journalInput {
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--text-body);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-strong);
+  background: var(--bg-input);
+  color: var(--ink);
+}
+
+.reflectBtn {
+  align-self: flex-start;
+  color: var(--zen);
+  font-size: var(--text-body);
+}
+
+@media (max-width: 640px) {
+  .header .title {
+    font-size: var(--text-title);
+  }
+
+  .subtitle,
+  .guide ul {
+    max-width: none;
+    font-size: var(--text-small);
+    line-height: var(--line-body);
+  }
+
+  .phase {
+    font-size: var(--text-caption);
+  }
+
+  .preset {
+    min-height: var(--touch-min);
+    padding: 0.4rem 0.75rem;
+    font-size: var(--text-small);
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    min-height: var(--touch-min);
+    font-size: var(--text-small);
+    padding: 0.6rem 1.1rem;
+  }
+
+  .guide {
+    padding: 1rem;
+  }
+
+  .guideTitle {
+    font-size: var(--text-body);
+  }
+}

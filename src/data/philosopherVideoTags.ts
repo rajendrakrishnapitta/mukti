@@ -1,0 +1,21 @@
+/** Extra philosopherIds on shared catalog entries (by video id) */
+export const PHILOSOPHER_VIDEO_TAG_PATCH: Record<string, string[]> = {
+  "socrates-democracy": ["socrates"],
+  "know-yourself": ["socrates", "plato"],
+  "plato-sol": ["plato"],
+  "plato-cave": ["plato"],
+  "marcus-aurelius": ["marcus-aurelius"],
+  epictetus: ["epictetus"],
+  "stoicism-intro": ["epictetus", "marcus-aurelius"],
+  "lao-tzu": ["laozi", "zhuangzi"],
+  "wu-wei": ["laozi", "zhuangzi"],
+  "alan-watts-real-you": ["laozi", "zhuangzi", "buddha"],
+  "existentialism-cc": ["simone-de-beauvoir", "nietzsche"],
+  "mind-resides": ["descartes"],
+  "free-will": ["kant"],
+  "justice-sandel": ["kant", "gopal-guru", "simone-de-beauvoir"],
+  "optimistic-nihilism": ["nietzsche"],
+  "what-is-philosophy": ["socrates", "wittgenstein"],
+  "meaning-life": ["nietzsche", "simone-de-beauvoir"],
+  "phil-annam-2": ["pothana"],
+};

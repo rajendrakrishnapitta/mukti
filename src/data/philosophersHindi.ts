@@ -1,0 +1,173 @@
+import type { PhilosopherProfile } from "./philosophers";
+
+/** Hindi & North Indian thinkers — classical Bhakti through modern reform */
+export const hindiPhilosophers: PhilosopherProfile[] = [
+  {
+    id: "kabir",
+    name: "Kabir (कबीर)",
+    tradition: "Hindi · Bhakti",
+    era: "15th c.",
+    hook: "Weaver-saint — God without temple, truth without caste.",
+    starters: [
+      "Why do you reject idol worship and empty ritual?",
+      "What does it mean that Rama and Rahim are one?",
+      "How can a householder find the Divine?",
+    ],
+  },
+  {
+    id: "tulsidas",
+    name: "Tulsidas (तुलसीदास)",
+    tradition: "Hindi · Bhakti",
+    era: "16th c.",
+    hook: "Ramcharitmanas — Rama's story in the people's tongue.",
+    starters: [
+      "Why render the Ramayana in Awadhi for common people?",
+      "What is dharma when duty and devotion conflict?",
+      "How does Rama teach us to live today?",
+    ],
+  },
+  {
+    id: "surdas",
+    name: "Surdas (सूरदास)",
+    tradition: "Hindi · Bhakti",
+    era: "16th c.",
+    hook: "Blind poet of Braj — Krishna's childhood in song.",
+    starters: [
+      "Why do you sing of Krishna as child and friend?",
+      "What is the path of grace (pushti) in your poetry?",
+      "How does devotion change how we see the world?",
+    ],
+  },
+  {
+    id: "mirabai",
+    name: "Mirabai (मीराबाई)",
+    tradition: "Hindi · Bhakti",
+    era: "16th c.",
+    hook: "Rajput princess — only Krishna is bridegroom of the heart.",
+    starters: [
+      "Why did you leave palace life for Krishna?",
+      "What is true love when society condemns you?",
+      "Can a woman own her spiritual path?",
+    ],
+  },
+  {
+    id: "vivekananda",
+    name: "Swami Vivekananda (स्वामी विवेकानंद)",
+    tradition: "Hindi · Modern Vedanta",
+    era: "19th c.",
+    hook: "Arise, awake — strength, service, and universal religion.",
+    starters: [
+      "What did you hope to teach the West in Chicago?",
+      "How are service to humanity and worship of God related?",
+      "What is the ideal education for India?",
+    ],
+  },
+  {
+    id: "dayananda-saraswati",
+    name: "Dayananda Saraswati (दयानंद)",
+    tradition: "Hindi · Reform",
+    era: "19th c.",
+    hook: "Back to the Vedas — reason, reform, and Arya Samaj.",
+    starters: [
+      "Why return to Vedic authority against superstition?",
+      "How should we reform caste and women's education?",
+      "What is the relation of religion and science for you?",
+    ],
+  },
+  {
+    id: "ramakrishna",
+    name: "Ramakrishna (रामकृष्ण)",
+    tradition: "Hindi · Bhakti-mystic",
+    era: "19th c.",
+    hook: "Many paths, one truth — Kali, Rama, and beyond form.",
+    starters: [
+      "Have you truly practiced many religions?",
+      "What is the difference between knowledge and realization?",
+      "How does devotion ripen into silence?",
+    ],
+  },
+  {
+    id: "aurobindo",
+    name: "Sri Aurobindo (श्री अरविन्द)",
+    tradition: "Hindi · Integral Yoga",
+    era: "19th–20th c.",
+    hook: "Evolution of consciousness — divine life on earth.",
+    starters: [
+      "What is Integral Yoga beyond escape from the world?",
+      "How does the Gita speak to modern India?",
+      "What is the future evolution of humanity?",
+    ],
+  },
+  {
+    id: "gandhi",
+    name: "Mahatma Gandhi (गांधी)",
+    tradition: "Hindi · Ahimsa",
+    era: "20th c.",
+    hook: "Truth-force — nonviolence as soul-force in action.",
+    starters: [
+      "What is satyagraha in everyday conflict?",
+      "How do means and ends relate ethically?",
+      "Can nonviolence work against injustice?",
+    ],
+  },
+  {
+    id: "ambedkar",
+    name: "B.R. Ambedkar (अम्बेडकर)",
+    tradition: "Hindi · Justice",
+    era: "20th c.",
+    hook: "Annihilate caste — dignity, law, and Buddhist renewal.",
+    starters: [
+      "Why is caste annihilation necessary for democracy?",
+      "What does social justice require beyond formal rights?",
+      "Why did you turn to the Buddha?",
+    ],
+  },
+  {
+    id: "tagore",
+    name: "Rabindranath Tagore (टैगोर)",
+    tradition: "Hindi · Poet-philosopher",
+    era: "20th c.",
+    hook: "Tagore's vision — freedom, nature, and world humanity.",
+    starters: [
+      "What is your critique of nationalism?",
+      "How does art open us to the infinite?",
+      "What education fits the whole human being?",
+    ],
+  },
+  {
+    id: "bhagat-singh",
+    name: "Bhagat Singh (भगत सिंह)",
+    tradition: "Hindi · Revolutionary thought",
+    era: "20th c.",
+    hook: "Revolution with a thinking head — freedom and equality.",
+    starters: [
+      "Why did you write 'Why I Am an Atheist'?",
+      "What kind of India were you willing to die for?",
+      "How do revolution and morality fit together?",
+    ],
+  },
+  {
+    id: "premchand",
+    name: "Premchand (प्रेमचंद)",
+    tradition: "Hindi · Literature & ethics",
+    era: "20th c.",
+    hook: "Stories of the poor — moral clarity in plain Hindi.",
+    starters: [
+      "What duty does literature owe to ordinary people?",
+      "How do your characters reveal social hypocrisy?",
+      "Can fiction change society?",
+    ],
+  },
+  {
+    id: "osho",
+    name: "Osho (ओशो)",
+    tradition: "Hindi · Contemporary mystic",
+    era: "20th c.",
+    hook: "Zorba the Buddha — celebration, awareness, and rebellion.",
+    starters: [
+      "Why combine meditation and worldly joy?",
+      "What is wrong with suppressing desire?",
+      "Can the mind be free of all authority?",
+    ],
+  },
+];

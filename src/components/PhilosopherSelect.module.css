@@ -1,0 +1,65 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.row .select {
+  flex: 1;
+}
+
+.label {
+  font-size: var(--text-caption);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+
+.select {
+  width: 100%;
+  font-family: inherit;
+  font-size: var(--text-body);
+  line-height: var(--line-body);
+  color: var(--ink);
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 0.65rem 2.25rem 0.65rem 0.85rem;
+  min-height: var(--touch-min, 2.75rem);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23a99f92' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  box-shadow: var(--shadow-card);
+}
+
+.select:focus {
+  outline: none;
+  border-color: rgba(148, 184, 160, 0.55);
+}
+
+.select optgroup {
+  font-weight: 600;
+  color: var(--ink-muted);
+  background: var(--bg-elevated);
+}
+
+.select option {
+  color: var(--ink);
+  background: var(--bg-card);
+  padding: 0.35rem 0;
+}
+
+@media (max-width: 640px) {
+  .select {
+    font-size: var(--text-small);
+  }
+}
