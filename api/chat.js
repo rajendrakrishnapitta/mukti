@@ -184,9 +184,11 @@ async function streamGoogle(apiKey, system, messages, res) {
   }
 
   if (!upstream) {
-    throw new Error(
+    const err = new Error(
       `Google: no available Gemini model. Last error: ${lastError.slice(0, 200)}`,
     );
+    err.code = "MODEL_UNAVAILABLE";
+    throw err;
   }
 
   const reader = upstream.body.getReader();
@@ -250,7 +252,11 @@ async function streamOpenAICompatible(
       err.code = `${label.toUpperCase()}_QUOTA`;
       throw err;
     }
-    throw new Error(`${label} ${upstream.status}: ${t.slice(0, 200)}`);
+    const err = new Error(`${label} ${upstream.status}: ${t.slice(0, 200)}`);
+    if (label === "Groq" && upstream.status === 404) {
+      err.code = "MODEL_UNAVAILABLE";
+    }
+    throw err;
   }
 
   res.setHeader("X-Mukti-Model", model);
@@ -296,7 +302,9 @@ async function streamGroq(apiKey, system, messages, res) {
       return;
     } catch (e) {
       lastErr = e;
-      if (isQuotaError(e)) continue;
+      if (!res.headersSent && (isQuotaError(e) || e.code === "MODEL_UNAVAILABLE")) {
+        continue;
+      }
       throw e;
     }
   }
@@ -434,7 +442,8 @@ module.exports = async function handler(req, res) {
       try {
         res.setHeader("X-Mukti-Provider", provider);
         if (i > 0) {
-          res.setHeader("X-Mukti-Fallback", `${chain[0]}-quota`);
+          const reason = isQuotaError(lastErr) ? "quota" : "model-unavailable";
+          res.setHeader("X-Mukti-Fallback", `${chain[i - 1]}-${reason}`);
         }
         await streamWithProvider(provider, system, messages, res);
         res.end();
@@ -442,9 +451,12 @@ module.exports = async function handler(req, res) {
       } catch (e) {
         lastErr = e;
         console.error(`[api/chat] ${provider} failed:`, e.message);
-        if (isQuotaError(e) && i < chain.length - 1) {
-          if (!res.headersSent) continue;
-          return;
+        if (
+          !res.headersSent &&
+          i < chain.length - 1 &&
+          (isQuotaError(e) || e.code === "MODEL_UNAVAILABLE")
+        ) {
+          continue;
         }
         break;
       }
