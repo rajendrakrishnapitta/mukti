@@ -1,38 +1,41 @@
-const CACHE = "mukti-static-v7";
-const ASSETS = ["/", "/index.html"];
+const CACHE = "mukti-portraits-v8";
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()),
-  );
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))),
+      Promise.all(
+        keys.filter((key) => key.startsWith("mukti-static-") || (
+          key.startsWith("mukti-portraits-") && key !== CACHE
+        )).map((key) => caches.delete(key)),
+      ),
     ).then(() => self.clients.claim()),
   );
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
-  const url = new URL(event.request.url);
-  if (url.pathname.startsWith("/api/")) return;
-  if (url.origin !== self.location.origin) return;
+  const request = event.request;
+  const url = new URL(request.url);
+  // Let the browser fetch the current HTML and its matching build assets.
+  if (
+    request.method !== "GET" ||
+    request.mode === "navigate" ||
+    url.origin !== self.location.origin ||
+    !url.pathname.startsWith("/philosophers/")
+  ) return;
 
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request)
-        .then((res) => {
-          if (res.ok && url.pathname.startsWith("/philosophers/")) {
-            const clone = res.clone();
-            caches.open(CACHE).then((c) => c.put(event.request, clone));
-          }
-          return res;
-        })
-        .catch(() => cached);
-      return cached ?? network;
-    }),
-  );
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE);
+    const cached = await cache.match(request);
+    if (cached) return cached;
+
+    const response = await fetch(request);
+    if (response.ok) {
+      await cache.put(request, response.clone()).catch(() => {});
+    }
+    return response;
+  })());
 });
