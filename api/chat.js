@@ -409,8 +409,20 @@ module.exports = async function handler(req, res) {
       system = buildSystemPrompt(webContext, language);
     }
 
-    if (webSources.length > 0) {
-      res.setHeader("X-Mukti-Sources", JSON.stringify(webSources).slice(0, 6000));
+    const sourceEntries = [];
+    let sourceHeaderLength = 2; // Array brackets
+    for (const source of webSources) {
+      // Keep JSON.parse compatibility while escaping characters HTTP headers reject.
+      const entry = JSON.stringify(source).replace(/[^\x20-\x7e]/g, (character) =>
+        "\\u" + character.charCodeAt(0).toString(16).padStart(4, "0"),
+      );
+      const entryLength = entry.length + (sourceEntries.length > 0 ? 1 : 0);
+      if (sourceHeaderLength + entryLength > 6000) continue;
+      sourceEntries.push(entry);
+      sourceHeaderLength += entryLength;
+    }
+    if (sourceEntries.length > 0) {
+      res.setHeader("X-Mukti-Sources", "[" + sourceEntries.join(",") + "]");
     }
 
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
