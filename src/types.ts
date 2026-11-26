@@ -1,4 +1,4 @@
-export type ViewId = "home" | "practice" | "dialogue";
+export type ViewId = "home" | "practice" | "dialogue" | "journey";
 
 /** Passed from Explore, Inquire, or elsewhere into Dialogue */
 export interface DialogueRequest {
@@ -22,5 +22,6 @@ export interface DialogueRequest {
 export const views: { id: ViewId; label: string; subtitle: string }[] = [
   { id: "home", label: "Today", subtitle: "Daily wisdom" },
   { id: "dialogue", label: "Dialogue", subtitle: "Ask anything" },
+  { id: "journey", label: "Journey", subtitle: "Guided reading" },
   { id: "practice", label: "Sit", subtitle: "Meditation" },
 ];

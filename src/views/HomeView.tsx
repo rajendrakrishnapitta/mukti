@@ -123,6 +123,13 @@ export function HomeView({ onNavigate, onOpenDialogue }: HomeViewProps) {
         </p>
       </section>
 
+      <div className={styles.cards}>
+        <button type="button" className={styles.card} onClick={() => onNavigate("journey")}>
+          <span className={styles.cardTitle} lang="en">Who am I?</span>
+          <span className={styles.cardDesc}>{t.nav.journeyCta}</span>
+        </button>
+      </div>
+
       <section className={styles.preview}>
         <h2 className={styles.heading}>{t.home.todaysInquiry}</h2>
         <PhilosophyInquirySelect value={philosophyId} onChange={setPhilosophyId} />
