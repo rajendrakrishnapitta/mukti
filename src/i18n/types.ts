@@ -9,6 +9,9 @@ export interface Messages {
     homeSub: string;
     dialogue: string;
     dialogueSub: string;
+    journey: string;
+    journeySub: string;
+    journeyCta: string;
     explore: string;
     exploreSub: string;
     inquire: string;

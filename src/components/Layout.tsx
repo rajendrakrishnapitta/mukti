@@ -11,7 +11,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-const VIEW_IDS: ViewId[] = ["home", "dialogue", "practice"];
+const VIEW_IDS: ViewId[] = ["home", "dialogue", "journey", "practice"];
 
 export function Layout({ view, onNavigate, children }: LayoutProps) {
   const { t } = useLanguage();
@@ -23,6 +23,8 @@ export function Layout({ view, onNavigate, children }: LayoutProps) {
         return { id, label: nav.home, subtitle: nav.homeSub };
       case "dialogue":
         return { id, label: nav.dialogue, subtitle: nav.dialogueSub };
+      case "journey":
+        return { id, label: nav.journey, subtitle: nav.journeySub };
       case "practice":
         return { id, label: nav.sit, subtitle: nav.sitSub };
     }

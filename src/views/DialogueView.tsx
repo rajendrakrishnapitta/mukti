@@ -35,6 +35,7 @@ function SetupNotice({
   googleQuota: boolean;
   setupTitle: string;
 }) {
+  const { t } = useLanguage();
   const errText = (error ?? "").toLowerCase();
   const setupError =
     quotaError ||
@@ -43,12 +44,12 @@ function SetupNotice({
     errText.includes("missing") ||
     errText.includes("failed to fetch");
 
-  if (!setupError && !error) return null;
+  if (!error && !quotaError) return null;
 
   return (
     <div className={styles.setupNotice} role="alert">
       <strong>{setupTitle}</strong>
-      <ol className={styles.setupList}>
+      {setupError && <ol className={styles.setupList}>
         {quotaError ? (
           <li>
             {groqQuota ? (
@@ -84,7 +85,8 @@ function SetupNotice({
             </li>
           </>
         )}
-      </ol>
+      </ol>}
+      <p><a href="#journey">{t.nav.journeyCta}</a></p>
       {error && <p className={styles.setupDetail}>Detail: {error}</p>}
     </div>
   );
